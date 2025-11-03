@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Hi {{ person.name.split()[0] }} — fill in your DPL skills</h2>
+<form method="post">
+  <div class="grid">
+    <div>
+      <label><strong>Hard Skills (What you can do)</strong><br><small>Specific, teachable abilities (e.g., Python, CAD, Jira). Aim for 3–5.</small></label>
+      <textarea name="hard_skills" rows="14">{{ (resp.hard_skills if resp) or '' }}</textarea>
+    </div>
+    <div>
+      <label><strong>Soft Skills (How you work)</strong><br><small>Qualities that shape how you work with others (e.g., facilitation, leadership).</small></label>
+      <textarea name="soft_skills" rows="14">{{ (resp.soft_skills if resp) or '' }}</textarea>
+    </div>
+    <div>
+      <label><strong>Areas to Grow / Improve</strong><br><small>Skills or habits to build next (e.g., exec comms, balancing speed & risk).</small></label>
+      <textarea name="areas_to_grow" rows="14">{{ (resp.areas_to_grow if resp) or '' }}</textarea>
+    </div>
+  </div>
+  <div class="extras">
+    <label>In 5 years, I want to…</label>
+    <textarea name="in_5_years" rows="3">{{ (resp.in_5_years if resp) or '' }}</textarea>
+    <label>A fun fact about me:</label>
+    <textarea name="fun_fact" rows="3">{{ (resp.fun_fact if resp) or '' }}</textarea>
+    <label>My hidden superpower is…</label>
+    <textarea name="superpower" rows="3">{{ (resp.superpower if resp) or '' }}</textarea>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

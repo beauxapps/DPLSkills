@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Unique Links</h2><p><a class="buttonlike" href="/links.csv">Download CSV</a></p>
+<table>
+  <thead><tr><th>Name</th><th>Link</th></tr></thead>
+  <tbody>
+  {% for row in data %}
+    <tr><td>{{ row.name }}</td><td><input class="linkbox" value="{{ row.link }}" readonly onclick="this.select()"></td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

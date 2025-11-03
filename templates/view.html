@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+{% block content %}
+{% if mapped %}
+<h2>Your swap partner: {{ owner.name }}</h2>
+<p>Below are <strong>{{ owner.name }}</strong>'s responses. Review before the session.</p>
+{% else %}
+<h2>Your saved responses</h2>
+<p>You can return later to edit until the swap is generated.</p>
+{% endif %}
+<div class="grid">
+  <div>
+    <h3>Hard Skills</h3>
+    <pre>{{ resp.hard_skills }}</pre>
+  </div>
+  <div>
+    <h3>Soft Skills</h3>
+    <pre>{{ resp.soft_skills }}</pre>
+  </div>
+  <div>
+    <h3>Areas to Grow</h3>
+    <pre>{{ resp.areas_to_grow }}</pre>
+  </div>
+</div>
+<div class="extras">
+  <h4>In 5 years, I want to…</h4>
+  <pre>{{ resp.in_5_years }}</pre>
+  <h4>Fun fact</h4>
+  <pre>{{ resp.fun_fact }}</pre>
+  <h4>Hidden superpower</h4>
+  <pre>{{ resp.superpower }}</pre>
+</div>
+{% endblock %}

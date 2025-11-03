@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Admin</h2>
+<p><strong>{{ submitted }}</strong> of <strong>{{ total }}</strong> people have submitted.</p>
+<form action="{{ url_for('generate_mapping') }}" method="post" style="display:inline-block;margin-right:1rem;">
+  <button type="submit">Generate / Regenerate Mapping</button>
+</form>
+<form action="{{ url_for('reset') }}" method="post" style="display:inline-block;">
+  <button type="submit">Clear Mapping</button>
+</form>
+
+<h3>People</h3>
+<table>
+  <thead><tr><th>Name</th><th>Submitted?</th></tr></thead>
+  <tbody>
+  {% for p in people %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ "✅" if p.submitted else "—" }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h3>Current Mapping</h3>
+{% if mapping %}
+<table>
+  <thead><tr><th>From</th><th>→</th><th>To</th></tr></thead>
+  <tbody>
+  {% for m in mapping %}
+    <tr><td>{{ m.from_name }}</td><td>→</td><td>{{ m.to_name }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p>Once this is generated, each responder will see their assigned partner by revisiting their original link.</p>
+{% else %}
+<p>No mapping yet.</p>
+{% endif %}
+{% endblock %}
